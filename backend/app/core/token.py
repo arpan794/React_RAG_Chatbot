@@ -1,7 +1,7 @@
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 
-secret_key = "your_secret_key"
+secret_key = "my_secret_key"
 algorithm = "HS256"
 access_token_expire_minutes = 30
 

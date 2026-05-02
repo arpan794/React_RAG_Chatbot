@@ -73,6 +73,6 @@ def login(user:UserCreate, db: Session = Depends(get_db)):
 def profile(current_user: str = Depends(get_current_user)):
     return {
         "message": "User profile",
-        "email": current_user
+        "email": f"Welcome {current_user}"
     }
 
