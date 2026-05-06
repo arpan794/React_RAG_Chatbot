@@ -6,13 +6,21 @@ function Register() {
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    
 
     const handleRegister = async () => {
+
+        if (!email || !password) {
+            alert("Email and password are required");
+            return;
+          }
+
         try {
-            await API.post("/register", {
+            await API.post("/auth/register", {
                 email,
                 password
             });
+            alert(res.data.message);
             navigate("/login")
         }
         catch (err) {

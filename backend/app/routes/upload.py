@@ -9,12 +9,12 @@ router = APIRouter()
 @router.post("/upload")
 def upload_file(file: UploadFile = File(...)):
     
-    os.makedirs("uploads, exist_ok=True")
+    os.makedirs("uploads", exist_ok=True)
 
     file_path = f"uploads/{uuid.uuid4()}_{file.filename}" # to prevent file overwrite risk
 
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    with open(file_path, "wb") as f:
+        shutil.copyfileobj(file.file, f)
 
     result = process_document(file_path)
 
